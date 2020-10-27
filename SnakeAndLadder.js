@@ -33,4 +33,5 @@ function GamePlayed(){
     }
     console.log(`Current Position: ${currentPosition}`);
 }
+
 GamePlayed();
