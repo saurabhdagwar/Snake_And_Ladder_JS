@@ -10,28 +10,30 @@ let currentPosition ;
 
 function GamePlayed(){
     currentPosition = STARTING_POSITION ;
-    var dice = Math.floor( Math.random() * 6 ) + 1 ;
-    process.stdout.write("random check: "+dice +" |");
-    var checkOption = Math.floor( Math.random() * 3 ) ;
-    switch(checkOption){
-        case LADDER :
-           console.log(' LADDER ');
-            if(currentPosition + dice <= ENDING_POSITION){
-            currentPosition = currentPosition + dice;
-            }
-            break;
-        case SNAKE :
-            console.log(' SNAKE ');
-            if(currentPosition - dice >= STARTING_POSITION ){
-            currentPosition = currentPosition - dice;
-            }
-            break;
-        default:
-            console.log(' NO PLAY ');
-            currentPosition = currentPosition;
-            break;
+    while(currentPosition < ENDING_POSITION){
+        var dice = Math.floor( Math.random() * 6 ) + 1 ;
+        process.stdout.write("random check: "+dice +" |");
+        var checkOption = Math.floor( Math.random() * 3 ) ;
+        switch(checkOption){
+            case LADDER :
+                process.stdout.write(' LADDER | ');
+                if(currentPosition + dice <= ENDING_POSITION){
+                currentPosition = currentPosition + dice;
+                }
+                break;
+            case SNAKE :
+                process.stdout.write(' SNAKE | ');
+                if(currentPosition - dice >= STARTING_POSITION ){
+                currentPosition = currentPosition - dice;
+                }
+                break;
+            default:
+                process.stdout.write(' NO PLAY | ');
+                currentPosition = currentPosition;
+                break;
+        }
+        process.stdout.write(`  ${currentPosition} | \n`);
     }
-    console.log(`Current Position: ${currentPosition}`);
 }
 
 GamePlayed();
