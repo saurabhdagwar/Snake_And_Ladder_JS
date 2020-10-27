@@ -37,7 +37,7 @@ function GamePlayed(){
         process.stdout.write(`  ${currentPosition} | \n`) ;
         diceCount++;
     }
-    console.log(`Number of Times Dice Played ${diceCount}`);
+    console.log(`Number of Times Dice Played ${diceCount}`) ;
 }
 
 GamePlayed();
