@@ -7,11 +7,12 @@ const SNAKE = 1 ;
 
 //Variables
 let currentPosition ;
-let diceCount = 0;
+let diceCount ;
+let Player1Position ;
+let Player2Position ;
 
-function GamePlayed(){
-    currentPosition = STARTING_POSITION ;
-    while(currentPosition < ENDING_POSITION){
+function GamePlayed(currentPosition){
+    if(currentPosition < ENDING_POSITION){
         var dice = Math.floor( Math.random() * 6 ) + 1 ;
         process.stdout.write("random check: "+dice +" |");
         var checkOption = Math.floor( Math.random() * 3 ) ;
@@ -37,7 +38,39 @@ function GamePlayed(){
         process.stdout.write(`  ${currentPosition} | \n`) ;
         diceCount++;
     }
-    console.log(`Number of Times Dice Played ${diceCount}`) ;
+    return currentPosition;
 }
 
-GamePlayed();
+function TwoPlayers(){
+     Player1Position = STARTING_POSITION;
+     Player2Position = STARTING_POSITION;
+    diceCount = STARTING_POSITION;
+    while( Player1Position < ENDING_POSITION && Player2Position < ENDING_POSITION ){
+        process.stdout.write('Player 1:-  | ');
+        Player1Position = GamePlayed(Player1Position);
+        console.log("----------------------------------------------------------------");
+        if(Player1Position == ENDING_POSITION){
+            break;
+        }
+        process.stdout.write('Player 2:-  | ');
+        Player2Position = GamePlayed(Player2Position);
+        console.log("----------------------------------------------------------------");
+        if(Player2Position == ENDING_POSITION){
+            break;
+        }
+    }
+}
+function CheckWinner(){
+    console.log("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    if(Player1Position == ENDING_POSITION ){
+        console.log("Player 1 Won The Game ");
+    }
+    else if(Player2Position == ENDING_POSITION ){
+        console.log("Player 2 Won The Game ");
+    }
+    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+}
+
+TwoPlayers();
+console.log(`Number of Times Dice Throws ${diceCount}`) ;
+CheckWinner();
