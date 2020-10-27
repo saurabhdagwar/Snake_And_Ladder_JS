@@ -28,11 +28,11 @@ function GamePlayed(){
                 }
                 break;
             default:
-                process.stdout.write(' NO PLAY | ');
+                process.stdout.write(' NO PLAY | ') ;
                 currentPosition = currentPosition;
                 break;
         }
-        process.stdout.write(`  ${currentPosition} | \n`);
+        process.stdout.write(`  ${currentPosition} | \n`)   ;
     }
 }
 
