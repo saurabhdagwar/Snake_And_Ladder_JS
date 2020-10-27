@@ -7,6 +7,7 @@ const SNAKE = 1 ;
 
 //Variables
 let currentPosition ;
+let diceCount = 0;
 
 function GamePlayed(){
     currentPosition = STARTING_POSITION ;
@@ -14,6 +15,7 @@ function GamePlayed(){
         var dice = Math.floor( Math.random() * 6 ) + 1 ;
         process.stdout.write("random check: "+dice +" |");
         var checkOption = Math.floor( Math.random() * 3 ) ;
+      
         switch(checkOption){
             case LADDER :
                 process.stdout.write(' LADDER | ');
@@ -32,8 +34,10 @@ function GamePlayed(){
                 currentPosition = currentPosition;
                 break;
         }
-        process.stdout.write(`  ${currentPosition} | \n`)   ;
+        process.stdout.write(`  ${currentPosition} | \n`) ;
+        diceCount++;
     }
+    console.log(`Number of Times Dice Played ${diceCount}`);
 }
 
 GamePlayed();
