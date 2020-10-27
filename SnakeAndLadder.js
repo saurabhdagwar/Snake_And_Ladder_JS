@@ -68,9 +68,9 @@ function CheckWinner(){
     else if(Player2Position == ENDING_POSITION ){
         console.log("Player 2 Won The Game ");
     }
+    console.log(`Total Number of Times Dice Thrown: ${diceCount}`) ;
     console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 }
 
 TwoPlayers();
-console.log(`Number of Times Dice Throws ${diceCount}`) ;
 CheckWinner();
